@@ -8,7 +8,6 @@ import BitterThin from 'src/assets/fonts/BitterThin.ttf';
 import BitterThinItalic from 'src/assets/fonts/BitterThinItalic.ttf';
 import AmaticSCRegular from 'src/assets/fonts/AmaticSCRegular.ttf';
 
-
 declare module '@mui/material/styles' {
   interface Palette {
     black: Palette['primary'];
@@ -17,6 +16,7 @@ declare module '@mui/material/styles' {
     green: Palette['primary'];
     pink: Palette['primary'];
     red: Palette['primary'];
+    brown: Palette['primary'];
   }
 
   interface PaletteOptions {
@@ -26,6 +26,7 @@ declare module '@mui/material/styles' {
     green: PaletteOptions['primary'];
     pink: PaletteOptions['primary'];
     red: PaletteOptions['primary'];
+    brown: Palette['primary'];
   }
 
   interface BreakpointOverrides {
@@ -55,8 +56,9 @@ export const theme = createTheme({
     },
     secondary: {
       main: '#6e7073',
-      light: '#b4bfc9',
+      light: '#e2e4e3',
       contrastText: '#c5cedc',
+      dark: '#1e1e1e',
     },
     blue: {
       main: '#2f80ed',
@@ -81,6 +83,12 @@ export const theme = createTheme({
       dark: '#7B242B',
       light: '#99242B',
     },
+    brown: {
+      main: '#96552C',
+      dark: '#6fcf97',
+      light: '#c5ecd6',
+      contrastText: '#c5cedc',
+    }
   },
   typography: {
     fontFamily: ['BitterBold', 'BitterMedium', 'BitterRegular', 'BitterLight', 'BitterExtraLight','BitterThin', 'BitterThinItalic', 'AmaticSCRegular'].join(','),
