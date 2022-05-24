@@ -69,7 +69,13 @@ export const Header = () => {
       <Grid item sx={{ width: "45%" }}>
         <StyledList>
           <StyledListItem>
-            <Link component="button" onClick={() => navigate(ROUTES.HOME)}>
+            <Link
+              component="button"
+              onClick={() => {
+                navigate(ROUTES.HOME);
+                window.scrollTo(0, 0);
+              }}
+            >
               Головна
             </Link>
           </StyledListItem>
@@ -77,7 +83,13 @@ export const Header = () => {
             <Link component="button">Історія</Link>
           </StyledListItem>
           <StyledListItem>
-            <Link component="button" onClick={() => navigate(ROUTES.CATALOG)}>
+            <Link
+              component="button"
+              onClick={() => {
+                navigate(ROUTES.CATALOG);
+                window.scrollTo(0, 0);
+              }}
+            >
               Buy art
             </Link>
           </StyledListItem>

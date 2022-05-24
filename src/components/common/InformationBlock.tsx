@@ -46,7 +46,7 @@ export const InformationBlock = ({ title, text }: TextBlockProps) => (
     <StyledDivider />
     <Box>
       {text.map((text) => (
-        <StyledText>{text}</StyledText>
+        <StyledText key={title}>{text}</StyledText>
       ))}
     </Box>
   </StyledWrapper>

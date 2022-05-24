@@ -118,12 +118,15 @@ export const REG_EX_PASSWORD =
 
 export const BASE_URL = "http://localhost:3001/api/";
 export const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNzZiYWE2NmMzZGYwYzE4ZTYxYzI1MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1MTk0ODIzMSwiZXhwIjoxNjUyMjA3NDMxfQ.29lTqowZSUooWSI640qGiUi0Fs3HVV0fh5NuYBhUqss";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGJmYmU0MmUwZGU0NTVlNjQ2ZjgwMyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTM0MjQ2MTcsImV4cCI6MTY1MzY4MzgxN30.0dMZjU5d5olez42ziqRfL0wPSM9OQiiLsMtgOBKb6aU";
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,
   headers: { token: `Barer ${TOKEN}` },
 });
+
+export const KEY =
+  "pk_test_51Kxdo6JUWpyNDqSP8PlGAIXKeKFbEpAUHXtg9LcrUmA4vzGmSBsU4ECjZYLR4Be7PIU8lXr8Tx2aEUc7gtzhgHWw00FTpvgU44";
 
 export type FoodStuffItemType = {
   img: string;
@@ -131,14 +134,6 @@ export type FoodStuffItemType = {
   desc: string;
   price: number;
 };
-
-export interface productItems {
-  title: string;
-  desc: string;
-  img: string;
-  price: number;
-  quantity?: number;
-}
 
 interface socialMediaProp {
   id: number;
@@ -173,3 +168,24 @@ export const socialMedia: socialMediaProp[] = [
     link: "https://web.telegram.org/",
   },
 ];
+
+export interface ProductsCard {
+  title: string;
+  artist: string;
+  edition: string;
+  medium: string;
+  signature: string;
+  unframed_dimension: string;
+  year: string;
+  img: string;
+  price: number;
+}
+
+export type ProductCardData = {
+  product: ProductsCard;
+};
+
+export interface ModalWindowProp {
+  isOpen: boolean;
+  handleClose: () => void;
+}

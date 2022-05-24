@@ -1,7 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ROUTES } from "src/constants/routes";
+import { Authorization } from "src/pages/Authorization";
+import { CatalogPage } from "src/pages/CatalogPage";
 import { HomePage } from "src/pages/HomePage";
 import { Page404 } from "src/pages/Page404";
+import { Registration } from "src/pages/Registration";
+import { Success } from "src/pages/Success";
 
 interface Page {
   component: JSX.Element;
@@ -15,36 +19,31 @@ const pages: Page[] = [
     path: ROUTES.HOME,
     pathName: "HomePage",
   },
-  // {
-  //   component: <ProductsCatalog />,
-  //   path: ROUTES.CATEGORY,
-  //   pathName: "CategoryPage",
-  // },
+  {
+    component: <CatalogPage />,
+    path: ROUTES.CATALOG,
+    pathName: "CatalogPage",
+  },
   // {
   //   component: <AdminPage />,
   //   path: ROUTES.ADMINPAGE,
   //   pathName: "UserPage",
   // },
-  // {
-  //   component: <Authorization />,
-  //   path: ROUTES.AUTHORIZATION,
-  //   pathName: "Authorization",
-  // },
-  // {
-  //   component: <Registration />,
-  //   path: ROUTES.REGISTER,
-  //   pathName: "Registration",
-  // },
-  // {
-  //   component: <ShoppingCard />,
-  //   path: ROUTES.SHOPPINGCARD,
-  //   pathName: "ShoppingCard",
-  // },
-  // {
-  //   component: <Success />,
-  //   path: ROUTES.SUCCESS,
-  //   pathName: "Success",
-  // },
+  {
+    component: <Authorization />,
+    path: ROUTES.AUTHORIZATION,
+    pathName: "Authorization",
+  },
+  {
+    component: <Registration />,
+    path: ROUTES.REGISTER,
+    pathName: "Registration",
+  },
+  {
+    component: <Success />,
+    path: ROUTES.SUCCESS,
+    pathName: "Success",
+  },
   // {
   //   component: <Products />,
   //   path: ROUTES.PRODUCTS,

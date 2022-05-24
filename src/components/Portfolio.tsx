@@ -52,7 +52,7 @@ export const Portfolio = () => (
     <StyledDivider />
     <StyledPortfolioWrapper>
       {protfolio.map((photo) => (
-        <StyledImage src={photo} alt="" />
+        <StyledImage key={photo} src={photo} alt="" />
       ))}
     </StyledPortfolioWrapper>
   </StyledWrapper>

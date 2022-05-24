@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
-import { productItems } from "src/constants";
+import {  ProductsCard } from "src/constants";
 
 //action-types
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const CLEAN_CART = 'CLEAN_CART';
 
 interface AddToCartItems {
-  product: productItems;
-  quantityItems: number;
+  product: ProductsCard;
   price: number;
 }
 
@@ -16,15 +15,13 @@ export const addToCart = (payload: AddToCartItems) => ({ type: ADD_TO_CART, payl
 export const cleanCart = () => ({ type: CLEAN_CART });
 
 type State = {
-  products: productItems[];
-  quantityItems: number;
+  products: ProductsCard[];
   total: number;
 };
 
 //reducer
 const initialState: State = {
   products: [],
-  quantityItems: 0,
   total: 0,
 };
 
@@ -38,14 +35,12 @@ export const addToCartReducer = (state = initialState, action: addToCart | clean
       return {
         ...state,
         products: state.products.concat(action.payload.product),
-        quantityItems: state.quantityItems += 1,
-        total: state.total += action.payload.price * action.payload.quantityItems
+        total: state.total += action.payload.price 
       };
       case CLEAN_CART:
       return {
         ...state,
         products: [],
-        quantityItems: 0,
         total: 0,
       };
     default:

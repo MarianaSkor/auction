@@ -1,7 +1,6 @@
 import { ChangeEvent, FC, FocusEvent } from "react";
 import {
   Grid,
-  InputAdornment,
   TextField,
   outlinedInputClasses,
   inputClasses,
@@ -12,13 +11,11 @@ import {
   Theme,
 } from "@mui/material";
 import { SxProps } from "@mui/system";
-//import { Icon, IconType } from "src/components/common/Icon/Icon";
 
 export interface InputProps {
   variant?: "outlined" | "standard";
   rows: number;
   placeholder?: string;
-  //icon?: IconType;
   handleClick?: () => void;
   paddingY: number;
   paddingX: number;
@@ -60,13 +57,13 @@ const StyledTextField = styled(TextField, {
 
   [`& .${outlinedInputClasses.input}, & .${inputClasses.input}`]: {
     padding: 0,
-    fontFamily: "FuturaPTBook",
+    fontFamily: "BitterRegular",
     fontSize: 14,
     lineHeight: 1.4,
     color: theme.palette.black.main,
 
     "&::placeholder": {
-      fontFamily: "FuturaPTBook",
+      fontFamily: "BitterRegular",
       fontSize: 14,
       lineHeight: 1.4,
       color:
@@ -92,7 +89,6 @@ const StyledTextField = styled(TextField, {
 }));
 
 export const Input: FC<InputProps> = ({
-  //icon = IconType.NoIcon,
   handleClick,
   testIdIcon,
   handleChange,
@@ -108,30 +104,17 @@ export const Input: FC<InputProps> = ({
   sxIcon,
   ...props
 }) => (
-  <></>
-  // <Grid>
-  //   <StyledTextField
-  //     data-testid="commonInput"
-  //     fullWidth
-  //     variant={variant}
-  //     placeholderColor={placeholderColor}
-  //     error={error}
-  //     helperText={error && helperText}
-  //     onChange={handleChange}
-  //     type={type}
-  //     {...props}
-  //     InputProps={{
-  //       endAdornment: (
-  //         <InputAdornment position="start">
-  //           <Icon
-  //             icon={icon}
-  //             onClick={handleClick}
-  //             data-testid={testIdIcon}
-  //             sx={sxIcon}
-  //           />
-  //         </InputAdornment>
-  //       ),
-  //     }}
-  //   />
-  // </Grid>
+  <Grid>
+    <StyledTextField
+      data-testid="commonInput"
+      fullWidth
+      variant={variant}
+      placeholderColor={placeholderColor}
+      error={error}
+      helperText={error && helperText}
+      onChange={handleChange}
+      type={type}
+      {...props}
+    />
+  </Grid>
 );
