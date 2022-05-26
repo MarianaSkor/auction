@@ -82,7 +82,6 @@ export const ModalBasket = ({ isOpen, handleClose }: ModalWindowProp) => {
     <>
       <Dialog
         open={isOpen}
-        onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >

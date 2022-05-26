@@ -1,4 +1,5 @@
 import { Box, Button, styled, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Slider, { Settings } from "react-slick";
 import slide1 from "src/assets/images/introSlider-1.jpg";
@@ -7,6 +8,7 @@ import slide3 from "src/assets/images/introSlider-3.jpg";
 import slide4 from "src/assets/images/introSlider-4.jpg";
 import slide5 from "src/assets/images/introSlider-5.jpg";
 import { ROUTES } from "src/constants/routes";
+import { RootState } from "src/redux/store";
 
 const PREFIX = "IntroSlider";
 
@@ -141,6 +143,8 @@ const slides: Array<string> = [slide1, slide2, slide3, slide4, slide5];
 
 export const IntroSlider = () => {
   const navigate = useNavigate();
+  const user = useSelector((state: RootState) => state.user.currentUser);
+  console.log(user);
 
   return (
     <StyledSliderSection>
@@ -160,21 +164,34 @@ export const IntroSlider = () => {
             допомагає виконувати складну справу життя, бо це прекрасне випрямляє
             її душу. Мистецтво – посередник того, що неможливо висловити.
           </StyledDescriptionBlock>
-          <Box sx={{ mt: 5 }}>
-            <StyledButton
-              variant="outlined"
-              sx={{ mr: 5 }}
-              onClick={() => navigate(ROUTES.REGISTER)}
-            >
-              Зареєструватися
-            </StyledButton>
-            <StyledButton
-              variant="outlined"
-              onClick={() => navigate(ROUTES.AUTHORIZATION)}
-            >
-              Ввійти
-            </StyledButton>
-          </Box>
+          {!user && (
+            <Box sx={{ mt: 5 }}>
+              <StyledButton
+                variant="outlined"
+                sx={{ mr: 5 }}
+                onClick={() => navigate(ROUTES.REGISTER)}
+              >
+                Зареєструватися
+              </StyledButton>
+              <StyledButton
+                variant="outlined"
+                onClick={() => navigate(ROUTES.AUTHORIZATION)}
+              >
+                Ввійти
+              </StyledButton>
+            </Box>
+          )}
+          {user && user.isAdmin && (
+            <Box sx={{ mt: 5 }}>
+              <StyledButton
+                variant="outlined"
+                sx={{ mr: 5 }}
+                onClick={() => navigate(ROUTES.ADMINPAGE)}
+              >
+                Перейти у кабінет
+              </StyledButton>
+            </Box>
+          )}
         </StyledTextWrapper>
       </StyledContent>
     </StyledSliderSection>

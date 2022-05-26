@@ -1,6 +1,7 @@
 import { Grid, styled } from "@mui/material";
 import { RegistrationForm } from "src/components/RegistrationForm";
 import Background from "src/assets/images/form_bg.jpg";
+import { Layout } from "src/components/Layout";
 
 const PREFIX = "RegistrationPage";
 
@@ -16,7 +17,9 @@ const StyledPageWrapper = styled(Grid, {
 }));
 
 export const Registration = () => (
-  <StyledPageWrapper>
-    <RegistrationForm />
-  </StyledPageWrapper>
+  <Layout>
+    <StyledPageWrapper>
+      <RegistrationForm />
+    </StyledPageWrapper>
+  </Layout>
 );

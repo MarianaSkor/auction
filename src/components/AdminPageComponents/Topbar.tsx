@@ -1,9 +1,12 @@
-import { Grid, List, ListItem, Link, styled } from "@mui/material";
+import { Button, Grid, styled, List, Link, ListItem } from "@mui/material";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import logo from "src/assets/images/logo_size.jpg";
 import { ROUTES } from "src/constants/routes";
+import { logOut } from "src/redux/userRedux";
+import { AddNewItemModal } from "./AddNewItemModal";
 
-const PREFIX = "Header";
+const PREFIX = "Topbar";
 
 const StyledGrid = styled(Grid, {
   name: `${PREFIX}-StyledGrid`,
@@ -19,7 +22,7 @@ const StyledGrid = styled(Grid, {
   boxShadow: `0px 2px 10px ${theme.palette.secondary.contrastText}`,
 
   [theme.breakpoints.down("md")]: {
-    padding: theme.spacing(0, 0.2),
+    padding: theme.spacing(0, 2),
   },
 
   [theme.breakpoints.down("ipad")]: {
@@ -27,16 +30,11 @@ const StyledGrid = styled(Grid, {
   },
 }));
 
-const StyledLogo = styled("img", {
-  name: `${PREFIX}-StyledLogo`,
-})(({ theme }) => ({
-  width: 80,
-}));
-
 const StyledList = styled(List, {
   name: `${PREFIX}-StyledList`,
 })(({ theme }) => ({
   display: "flex",
+  marginLeft: theme.spacing(5),
 }));
 
 const StyledListItem = styled(ListItem, {
@@ -48,6 +46,7 @@ const StyledListItem = styled(ListItem, {
     textTransform: "uppercase",
     fontFamily: "BitterBold",
     color: theme.palette.secondary.main,
+    width: 100,
     transition: "all 0.3s",
 
     "&:hover": {
@@ -56,29 +55,46 @@ const StyledListItem = styled(ListItem, {
   },
 }));
 
-export const Header = () => {
+const StyledListWrapper = styled(Grid, {
+  name: `${PREFIX}-StyledListWrapper`,
+})(({ theme }) => ({
+  display: "flex",
+}));
+
+export const Topbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleCloseModal = () => setIsOpen((x) => !x);
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+    navigate(ROUTES.HOME);
+  };
 
   return (
     <StyledGrid container>
-      <Grid item>
+      <StyledListWrapper item>
         <Link
           component="button"
-          onClick={() => {
-            navigate(ROUTES.HOME);
-            window.scrollTo(0, 0);
+          sx={{
+            fontSize: 20,
+            cursor: "pointer",
+            fontFamily: "BitterBold",
+            textDecoration: "none",
           }}
+          onClick={() => navigate(ROUTES.HOME)}
         >
-          <StyledLogo src={logo} alt="logo" />
+          Art IBC
         </Link>
-      </Grid>
-      <Grid item sx={{ width: "45%" }}>
+
         <StyledList>
           <StyledListItem>
             <Link
               component="button"
               onClick={() => {
-                navigate(ROUTES.HOME);
+                navigate(ROUTES.ADMINPAGE);
                 window.scrollTo(0, 0);
               }}
             >
@@ -86,27 +102,27 @@ export const Header = () => {
             </Link>
           </StyledListItem>
           <StyledListItem>
-            <Link component="button">Історія</Link>
-          </StyledListItem>
-          <StyledListItem>
             <Link
               component="button"
               onClick={() => {
-                navigate(ROUTES.CATALOG);
+                navigate(ROUTES.PRODUCTS);
                 window.scrollTo(0, 0);
               }}
             >
-              Buy art
+              Список лотів
             </Link>
           </StyledListItem>
           <StyledListItem>
-            <Link component="button">Блог</Link>
-          </StyledListItem>
-          <StyledListItem>
-            <Link component="button">Контакти</Link>
+            <Link component="button" onClick={handleCloseModal}>
+              Додати лот
+            </Link>
           </StyledListItem>
         </StyledList>
+      </StyledListWrapper>
+      <Grid item>
+        <Button onClick={handleLogOut}>Log out</Button>
       </Grid>
+      <AddNewItemModal isOpen={isOpen} handleClose={handleCloseModal} />
     </StyledGrid>
   );
 };

@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ROUTES } from "src/constants/routes";
+import { AdminPage } from "src/pages/AdminPage";
 import { Authorization } from "src/pages/Authorization";
 import { CatalogPage } from "src/pages/CatalogPage";
+import { EditProductPage } from "src/pages/EditProductPage";
 import { HomePage } from "src/pages/HomePage";
 import { Page404 } from "src/pages/Page404";
+import { Products } from "src/pages/Products";
 import { Registration } from "src/pages/Registration";
 import { Success } from "src/pages/Success";
 
@@ -24,11 +27,11 @@ const pages: Page[] = [
     path: ROUTES.CATALOG,
     pathName: "CatalogPage",
   },
-  // {
-  //   component: <AdminPage />,
-  //   path: ROUTES.ADMINPAGE,
-  //   pathName: "UserPage",
-  // },
+  {
+    component: <AdminPage />,
+    path: ROUTES.ADMINPAGE,
+    pathName: "UserPage",
+  },
   {
     component: <Authorization />,
     path: ROUTES.AUTHORIZATION,
@@ -44,21 +47,16 @@ const pages: Page[] = [
     path: ROUTES.SUCCESS,
     pathName: "Success",
   },
-  // {
-  //   component: <Products />,
-  //   path: ROUTES.PRODUCTS,
-  //   pathName: "Products",
-  // },
-  // {
-  //   component: <EditProductPage />,
-  //   path: ROUTES.EDITPRODUCT,
-  //   pathName: "EditProduct",
-  // },
-  // {
-  //   component: <NewProduct />,
-  //   path: ROUTES.NEWPRODUCT,
-  //   pathName: "NewProduct",
-  // },
+  {
+    component: <Products />,
+    path: ROUTES.PRODUCTS,
+    pathName: "Products",
+  },
+  {
+    component: <EditProductPage />,
+    path: ROUTES.EDITPRODUCT,
+    pathName: "EditProduct",
+  },
   {
     component: <Page404 />,
     path: "*",

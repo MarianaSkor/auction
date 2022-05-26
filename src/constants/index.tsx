@@ -118,7 +118,7 @@ export const REG_EX_PASSWORD =
 
 export const BASE_URL = "http://localhost:3001/api/";
 export const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGJmYmU0MmUwZGU0NTVlNjQ2ZjgwMyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTM0MjQ2MTcsImV4cCI6MTY1MzY4MzgxN30.0dMZjU5d5olez42ziqRfL0wPSM9OQiiLsMtgOBKb6aU";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGY0NDYwMjQ3ZTQ2YmU3ZTI5ZjY0NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1MzU1NjM5OCwiZXhwIjoxNjUzODE1NTk4fQ.cUhSCd2mT3tSJfWetHm-jFpFFz29GkW6Si3mj5qEiTU";
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,

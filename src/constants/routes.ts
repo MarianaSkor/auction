@@ -11,5 +11,4 @@ export const ROUTES = {
     SUCCESS: '/success',
     PRODUCTS: '/admin/products',
     EDITPRODUCT: 'admin/products/:productId',
-    NEWPRODUCT: '/new-product'
 }
